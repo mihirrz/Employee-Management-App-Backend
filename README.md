@@ -8,6 +8,9 @@ This is the backend of the Employee Management App, a platform for managing empl
 - Role-based authentication and authorization
 - Password encryption and secure handling of user data
 - API endpoints for managing employees
+- ApiResponse: For all general success and failure responses.
+- ApiErrorResponse: For structured error messages when something goes wrong (e.g., 404 Not Found, 500 Internal Server Error).
+- ErrorDetails:Specifically for detailed field-level validation errors.
 
 ## Technologies Used
 
