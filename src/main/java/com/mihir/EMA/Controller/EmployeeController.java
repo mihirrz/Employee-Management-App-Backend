@@ -45,4 +45,26 @@ public class EmployeeController {
     }
 
 
+    @PutMapping(value = "/updateEmployee/{id}", produces = "application/json")
+    public ResponseEntity<ApiResponse<?>> updateEmployee(
+            @PathVariable Long id,
+            @Valid @RequestBody EmployeeDTO employeeDTO,
+            
+            BindingResult bindingResult) {
+
+        if(bindingResult.hasErrors())
+        {
+            List<ErrorDetails> errorDetails = bindingResult.getFieldErrors().stream()
+                    .map(error -> new ErrorDetails(error.getField(), error.getDefaultMessage()))
+                    .toList();
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.failure("Validation failed", errorDetails));
+        }
+
+        employeeService.updateEmployee(id, employeeDTO);
+
+        return ResponseEntity.ok()
+                .body(ApiResponse.success("Employee updated successfully", null));
+    }
+
 }

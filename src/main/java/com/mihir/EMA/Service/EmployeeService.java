@@ -3,6 +3,7 @@ package com.mihir.EMA.Service;
 import com.mihir.EMA.DTO.EmployeeDTO;
 import com.mihir.EMA.Entity.Employee;
 import com.mihir.EMA.Repository.EmployeeRepository;
+import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,24 @@ public List<EmployeeDTO> getAllEmployees() {
                     employee.getEmployeeDesignation(),
                     employee.getPassword()))
             .collect(Collectors.toList());
-}
+    }
+
+    public void updateEmployee(Long id, EmployeeDTO employeeDTO) {
+        // Find the existing employee by ID
+        Employee existingEmployee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(STR."Employee not found with ID: \{id}"));
+
+        // Update the fields
+        existingEmployee.setEmployeeFirstName(employeeDTO.getEmployeeFirstName());
+        existingEmployee.setEmployeeLastName(employeeDTO.getEmployeeLastName());
+        existingEmployee.setEmployeeContactNumber(employeeDTO.getEmployeeContactNumber());
+        existingEmployee.setEmployeeEmail(employeeDTO.getEmployeeEmail());
+        existingEmployee.setEmployeeRole(employeeDTO.getEmployeeRole());
+        existingEmployee.setEmployeeDesignation(employeeDTO.getEmployeeDesignation());
+        existingEmployee.setPassword(employeeDTO.getPassword());
+
+        // Save the updated employee back to the database
+        employeeRepository.save(existingEmployee);
+    }
 
 }
