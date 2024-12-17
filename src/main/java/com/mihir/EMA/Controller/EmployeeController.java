@@ -38,13 +38,13 @@ public class EmployeeController {
                 .body(ApiResponse.success("Employee created successfully", null));
     }
 
-    // Endpoint to list the employee
+    // Endpoint to list down all the employees
     @GetMapping("/employeesList")
     public ResponseEntity<ApiResponse<List<EmployeeDTO>>> getAllEmployees() {
         List<EmployeeDTO> employeeList = employeeService.getAllEmployees();
 
         if(employeeList.isEmpty())
-            return ResponseEntity.ok(ApiResponse.success("No employees found in the database"));
+            return ResponseEntity.ok(ApiResponse.success("No employees found", null));
 
         return ResponseEntity.ok(ApiResponse.success("Employees fetched successfully", employeeList));
     }
