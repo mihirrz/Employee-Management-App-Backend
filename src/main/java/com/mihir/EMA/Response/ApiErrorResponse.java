@@ -18,7 +18,6 @@ public class ApiErrorResponse {
         this.details = details;
     }
 
-<<<<<<< HEAD
     public String getErrorCode() {
         return errorCode;
     }
@@ -43,8 +42,6 @@ public class ApiErrorResponse {
         this.details = details;
     }
 
-=======
->>>>>>> 1dc18b248809ed59d7b1b1e435046f2901902775
     // Static factory method
     public static ApiErrorResponse from(String errorCode, String errorMessage, Object details) {
         return new ApiErrorResponse(errorCode, errorMessage, details);
