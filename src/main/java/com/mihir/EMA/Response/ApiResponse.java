@@ -55,14 +55,13 @@ public class ApiResponse<T> {
         return new ApiResponse<>(true, message, data);
     }
 
+    public static <T> ApiResponse<T> success(String message){ return new ApiResponse<>(true, message, null); }
+
     // Static factory method for failure responses with optional data
     public static <T> ApiResponse<T> failure(String message, T data) {
         return new ApiResponse<>(false, message, data);
     }
 
     // Static factory method for failure responses
-    public static <T> ApiResponse<T> failure(String message) {
-        return new ApiResponse<>(false, message, null);
-
-    }
+    public static <T> ApiResponse<T> failure(String message) {return new ApiResponse<>(false, message, null); }
 }

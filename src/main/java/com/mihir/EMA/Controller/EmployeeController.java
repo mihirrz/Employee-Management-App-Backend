@@ -38,13 +38,19 @@ public class EmployeeController {
                 .body(ApiResponse.success("Employee created successfully", null));
     }
 
-
+    // Endpoint to list the employee
     @GetMapping("/employeesList")
     public ResponseEntity<ApiResponse<List<EmployeeDTO>>> getAllEmployees() {
-        return ResponseEntity.ok(ApiResponse.success("Employees fetched successfully", employeeService.getAllEmployees()));
+        List<EmployeeDTO> employeeList = employeeService.getAllEmployees();
+
+        if(employeeList.isEmpty())
+            return ResponseEntity.ok(ApiResponse.success("No employees found in the database"));
+
+        return ResponseEntity.ok(ApiResponse.success("Employees fetched successfully", employeeList));
     }
 
 
+    // Endpoint to update the existing employee using id
     @PutMapping(value = "/updateEmployee/{id}", produces = "application/json")
     public ResponseEntity<ApiResponse<?>> updateEmployee(
             @PathVariable Long id,
