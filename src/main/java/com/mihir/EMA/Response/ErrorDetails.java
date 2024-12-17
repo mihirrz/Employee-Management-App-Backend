@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+<<<<<<< HEAD
 //@AllArgsConstructor
 public class ErrorDetails {
     private String fieldName; // The field where the error occurred
@@ -29,4 +30,10 @@ public class ErrorDetails {
     public void setMessage(String message) {
         this.message = message;
     }
+=======
+@AllArgsConstructor
+public class ErrorDetails {
+    private String fieldName; // The field where the error occurred
+    private String message;   // Validation error message
+>>>>>>> 1dc18b248809ed59d7b1b1e435046f2901902775
 }

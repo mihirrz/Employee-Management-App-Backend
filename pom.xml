@@ -95,10 +95,13 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.34</version>
+<<<<<<< HEAD
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+=======
+>>>>>>> 1dc18b248809ed59d7b1b1e435046f2901902775
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
