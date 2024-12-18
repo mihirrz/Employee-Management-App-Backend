@@ -46,12 +46,6 @@ This is the backend of the Employee Management App, a platform for managing empl
    mvn spring-boot:run
    ```
 
-5. Access the H2 database console:
-
-   - URL: `http://localhost:8080/h2-console`
-   - JDBC URL: `jdbc:h2:mem:testdb`
-   - Username: `sa`
-   - Password: (leave it blank)
 
 ## API Endpoints
 
