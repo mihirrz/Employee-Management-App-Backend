@@ -83,7 +83,7 @@ This is the backend of the Employee Management App, a platform for managing empl
   ```
 
 ### Delete an Employee
-- **URL**: `DELETE /api/employee/delete/{id}`
+- **URL**: `DELETE /api/employee/deleteEmployee/{id}`
 
 ## Using POSTMAN
 
