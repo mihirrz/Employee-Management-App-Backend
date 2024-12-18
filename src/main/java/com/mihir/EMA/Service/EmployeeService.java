@@ -69,4 +69,16 @@ public List<EmployeeDTO> getAllEmployees() {
         employeeRepository.save(existingEmployee);
     }
 
+    public void deleteEmployee(Long id) {
+        // Check if the employee exists
+        Employee existingEmployee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("Employee not found with ID: %d", id)
+                ));
+
+        // Delete the employee
+        employeeRepository.delete(existingEmployee);
+    }
+
+
 }

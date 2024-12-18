@@ -36,10 +36,11 @@ public class AppConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable) // Enable CSRF selectively
+                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/signup", "/employeeList").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN" +
+                                "")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults()); // Enable HTTP Basic authentication
